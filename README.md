@@ -38,6 +38,7 @@ However far you and your partner get, the application should have, at a minimum,
 - RESTful routing
 - Deployed application to Heroku
 - A "look and feel" that will make you and your partner happy!
+- An ERD representing your application's data model
 
 ## User Stories
 
