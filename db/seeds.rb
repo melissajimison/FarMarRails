@@ -7,9 +7,19 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'csv'
-FILE_PATH = 'db/seed_csvs/markets.csv'
+FILE_PATH_MARKETS = 'db/seed_csvs/markets.csv'
+FILE_PATH_VENDORS = 'db/seed_csvs/vendors.csv'
 
-CSV.foreach(FILE_PATH) do |row|
+CSV.foreach(FILE_PATH_VENDORS) do |row|
+  row_hash = {}
+  row_hash[:name] = row[1]
+  row_hash[:employees] = row[2]
+  row_hash[:market_id] = row[3]
+  Vendor.create(row_hash)
+end
+
+
+CSV.foreach(FILE_PATH_MARKETS) do |row|
   row_hash = {}
 
   row_hash[:name] = row[1]
