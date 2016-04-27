@@ -9,5 +9,6 @@ class ApplicationController < ActionController::Base
     @market = Market.find(params[:id])
     @vendors = Vendor.where(market_id: @market.id)
   end
+
   protect_from_forgery with: :exception
 end

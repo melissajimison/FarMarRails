@@ -1,5 +1,6 @@
 class MarketsController < ApplicationController
+  def index
+    
+  end
 
-
-  #This is Melissa's comment
 end
