@@ -7,3 +7,10 @@
 	<li>State: <%= @market.state %></li>
 	<li>Zip: <%= @market.zip %></li>
 </ul>
+
+<h2>List of vendors</h2>
+<ul>
+<% @vendors.each do |vendor|%>
+	<li><%= vendor.name %>:<%= vendor.employees %>,  <%= vendor.market_id %></li>
+<% end %>
+</ul>
