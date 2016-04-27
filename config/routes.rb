@@ -18,6 +18,13 @@ Rails.application.routes.draw do
 
   get 'application/vendors' => 'vendors#index', as: 'vendors'
 
+  post 'application/vendors' => 'vendors#create'
+  get  'application/vendors/new'  => 'vendors#new'
+
+  delete 'application/vendors/:id' => 'vendors#destroy'
+
+  get 'application/vendors/:id/edit' => 'vendors#edit', as: 'edit_vendor'
+  patch 'application/vendors/:id' => 'vendors#update'
 
 ###############
   get 'application/:id' => 'application#show', as: 'application'
