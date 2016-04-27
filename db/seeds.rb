@@ -12,6 +12,7 @@ FILE_PATH_VENDORS = 'db/seed_csvs/vendors.csv'
 
 CSV.foreach(FILE_PATH_VENDORS) do |row|
   row_hash = {}
+  row_hash[:id] = row[0]
   row_hash[:name] = row[1]
   row_hash[:employees] = row[2]
   row_hash[:market_id] = row[3]
@@ -21,7 +22,7 @@ end
 
 CSV.foreach(FILE_PATH_MARKETS) do |row|
   row_hash = {}
-
+  row_hash[:id] = row[0]
   row_hash[:name] = row[1]
   row_hash[:address] = row[2]
   row_hash[:city] = row[3]
