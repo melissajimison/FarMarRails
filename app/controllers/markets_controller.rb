@@ -7,4 +7,5 @@ class MarketsController < ApplicationController
     @market = Market.find(params[:id])
   end
 
+  #This is Melissa's comment
 end
