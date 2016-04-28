@@ -10,6 +10,12 @@ class ProductsController < ApplicationController
     redirect_to @product
   end
 
+  def destroy
+    @product = Product.where(id: params[:product_id])
+    @product.destroy_all
+    redirect_to vendor_path
+  end
+
   def edit
   end
 
