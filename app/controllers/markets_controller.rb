@@ -3,11 +3,11 @@ class MarketsController < ApplicationController
 
   end
 
-  def new
+  def new_market
     @market = Market.new
   end
 
-  def create
+  def create_market
     @market = Market.new(market_create_params)
     if @market.save
       redirect_to application_path(@market.id)
@@ -17,15 +17,15 @@ class MarketsController < ApplicationController
     end
   end
 
-  def  search
+  def  search_market
     @markets = Market.find(params[:q])
   end
 
-  def edit
+  def edit_market
     @market = Market.find(params[:q])
   end
 
-  def update
+  def update_market
     @market = Market.find(params[:id])
     @market.update(markets_create_params)
     redirect_to root_path

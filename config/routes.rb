@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   get 'application/markets' => 'markets#index', as: 'markets'
 
 
-  post 'application/markets' => 'markets#create'
-  get  'application/markets/new'  => 'markets#new'
+  post 'application/markets' => 'markets#create_market'
+  get  'application/markets/new'  => 'markets#new_market'
 
-  delete 'application/markets/:id' => 'markets#destroy'
+  delete 'application/markets/:id' => 'markets#destroy_market'
 
-  get 'application/markets/:id/edit' => 'markets#edit', as: 'edit_market'
-  patch 'application/markets/:id' => 'markets#update'
+  get 'application/markets/search' => 'markets#search_market', as: 'search_market'
+  get 'application/markets/:id/edit' => 'markets#edit_market', as: 'edit_market'
+  patch 'application/markets/:id' => 'markets#update_market'
 
 #################
 
