@@ -48,7 +48,4 @@ class MarketsController < ApplicationController
     params.require(:market).permit(:name, :city, :county, :state, :zip)
   end
 
-  def vendor_create_params
-    params.require(:vendor).permit(:name, :employees, :market_id)
-  end
 end
