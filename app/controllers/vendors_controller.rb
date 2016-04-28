@@ -5,6 +5,7 @@ class VendorsController < ApplicationController
   end
 
   def show
+    @vendor = Vendor.where(id: params[:id]).first
 
   end
 

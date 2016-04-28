@@ -1,1 +1,5 @@
 <pre><%= params %></pre>
+
+Vendor name: <%=@vendor.name%><br>
+Number of Employees: <%=@vendor.employees%><br>
+Market Name: <%=Market.where(id:@vendor.id).first.name%>
