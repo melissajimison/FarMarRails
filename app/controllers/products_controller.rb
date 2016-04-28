@@ -1,9 +1,12 @@
 class ProductsController < ApplicationController
   def show
-
+    @product = Product.where(id: params[:product_id])
   end
 
   def update
+    # task = Task.find(params[:id])
+    # task.update_attributes(task_update_params[:task])
+    # redirect_to root_path
   end
 
   def delete
@@ -17,6 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @product = Product.find(params[:product_id])
   end
 
   def search

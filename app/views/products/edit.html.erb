@@ -1,1 +1,14 @@
 <h1>product edit page</h1>
+<pre><%= params %></pre>
+<pre><%= @product.name %></pre>
+<pre><%= @product %></pre>
+
+<%= form_for @product do |f| %>
+
+
+<table>
+	<td><%= f.label :name %>
+  <%= f.text_field :name %></td>
+    <td><%= f.submit %></td>
+<% end %>
+</table>
