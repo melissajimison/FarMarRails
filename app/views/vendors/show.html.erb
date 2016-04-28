@@ -3,7 +3,7 @@
 Vendor name: <%=@vendor.name%><br>
 Number of Employees: <%=@vendor.employees%><br>
 Market Name: <%=Market.where(id:@vendor.id).first.name%>
-
+<h2><%=link_to "Add a Product", product_new_path %></h2>
 
 <h2>Your Products</h2>
 <ul>
