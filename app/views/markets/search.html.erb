@@ -9,3 +9,4 @@
 </ul>
 
 <%= button_to "Edit", edit_market_path(@markets), method: :get %>
+<%= button_to "Delete", destroy_market_path(@markets), method: :delete, data: { confirm: "Are you sure?" } %>
