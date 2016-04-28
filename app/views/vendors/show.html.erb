@@ -17,3 +17,20 @@ Market Name: <%=Market.where(id:@vendor.id).first.name%>
 <% end %>
 </ul>
 
+<h2>Your Sales</h2>
+<ul>
+<% @sales.each do |sale|%>
+<li>
+Amount: <%= sale.amount %> <br>Product <%= Product.find(sale.product_id).name %>
+</li>
+<% end %>
+</ul>
+<h2><%=link_to "Add a Sale", sale_new_path %></h2>
+
+
+<h2>Sum of All Sales</h2>
+<%sum = 0 %>
+<% @sales.each do |sale| %>
+<% sum += sale.amount %>
+<% end %>
+<%= sum %>

@@ -7,6 +7,7 @@ class VendorsController < ApplicationController
   def show
     @vendor = Vendor.where(id: params[:id]).first
     @products = Product.where(vendor_id: params[:id])
+    @sales = Sale.where(vendor_id: params[:id])
   end
 
   def search
