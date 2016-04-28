@@ -1,0 +1,11 @@
+<%= params %>
+<ul>
+<li><%= @markets.name %></li>
+<li><%= @markets.address %></li>
+<li><%= @markets.city %></li>
+<li><%= @markets.county %></li>
+<li><%= @markets.state %></li>
+<li><%= @markets.zip %></li>
+</ul>
+
+<%= button_to "Edit", edit_market_path(@markets.id), method: :get %>

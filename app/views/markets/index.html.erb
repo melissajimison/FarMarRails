@@ -1,1 +1,19 @@
 <pre><%= params %></pre>
+
+<%= link_to "Add New Market", application_markets_new_path %>
+
+<br>
+<br>
+<br>
+
+<%= form_tag(search_market_path, method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+<%= text_field_tag :q, "Enter Market ID" %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<br>
+<br>
+<br>
+
+<%= link_to "Add New vendor", application_markets_new_path %>
