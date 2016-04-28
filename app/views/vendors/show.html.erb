@@ -3,3 +3,17 @@
 Vendor name: <%=@vendor.name%><br>
 Number of Employees: <%=@vendor.employees%><br>
 Market Name: <%=Market.where(id:@vendor.id).first.name%>
+
+
+<h2>Your Products</h2>
+<ul>
+<% @products.each do |product|%>
+	<li><%= link_to product.name, product_path(product.id) %>
+
+		<%= button_to "Edit", product_edit_path, :method => :get, params: {product_id: product.id} %>
+
+
+	<%= button_to "Delete", product_delete_path, :method => :delete,  data: { confirm: "Are you sure?" }, params: {product_id: product.id} %></li>
+<% end %>
+</ul>
+
