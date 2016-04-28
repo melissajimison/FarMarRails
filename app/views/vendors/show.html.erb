@@ -3,3 +3,11 @@
 Vendor name: <%=@vendor.name%><br>
 Number of Employees: <%=@vendor.employees%><br>
 Market Name: <%=Market.where(id:@vendor.id).first.name%>
+
+
+<h2>Your Products</h2>
+<ul>
+<% @products.each do |product|%>
+	<li><%= product.name %></li>
+<% end %>
+</ul>
