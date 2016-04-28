@@ -1,12 +1,24 @@
 class ProductsController < ApplicationController
-  def show
-    @product = Product.where(id: params[:product_id])
+
+
+  def new 
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_create_params[:product])
+    if @product.save
+      redirect_to vendor_path(@product.vendor_id)
+    else
+    render :new
+    end
   end
 
   def update
+    product = Product.find(params[:id])
     # task = Task.find(params[:id])
-    # task.update_attributes(task_update_params[:task])
-    # redirect_to root_path
+    product.update_attributes(product_update_params[:product])
+    redirect_to vendor_path(product.vendor_id)
   end
 
   def delete
@@ -26,5 +38,19 @@ class ProductsController < ApplicationController
   def search
     @product = Product.where(id: params[:id]).first
     redirect_to @product
+  end
+
+  def show
+    @product = Product.where(id: params[:product_id])
+  end
+
+  private
+  #tells us what parameters we want to use when we create an album
+  def product_create_params
+    params.permit(product: [:name, :vendor_id])
+  end
+
+  def product_update_params
+    params.permit(product: [:name])
   end
 end

@@ -17,9 +17,19 @@ Rails.application.routes.draw do
 #################
 
   get 'application/vendors' => 'vendors#index', as: 'vendors'
+
+
+  get  'application/vendors/new'  => 'vendors#new', as: 'vendor_new'
   post 'application/vendors' => 'vendors#create'
   get 'application/vendors/search' => 'vendors#search', as: 'search_vendor'
+
+  delete 'application/vendors/:id' => 'vendors#destroy'
+  get 'application/vendors/:id/edit' => 'vendors#edit', as: 'edit_vendor'
+  patch 'application/vendors/:id' => 'vendors#update'
   get 'application/vendors/:id' => 'vendors#show', as: 'vendor'
+
+  get 'application/vendors/product/new' => 'products#new', as: 'product_new'
+  post   'application/vendors/product/new'    => 'products#create', as: 'product_create'
 
   get 'application/vendors/product/search' => 'products#search', as: 'search_product'
   get 'application/vendors/product/:id' => 'products#show', as: 'product'
@@ -29,12 +39,8 @@ Rails.application.routes.draw do
 
   delete 'application/vendors/product/:id'      => 'products#destroy', as: 'product_delete'
 
-  get  'application/vendors/new'  => 'vendors#new'
 
-  delete 'application/vendors/:id' => 'vendors#destroy'
 
-  get 'application/vendors/:id/edit' => 'vendors#edit', as: 'edit_vendor'
-  patch 'application/vendors/:id' => 'vendors#update'
 
 ###############
   get 'application/:id' => 'application#show', as: 'application'
