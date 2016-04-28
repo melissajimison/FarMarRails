@@ -1,0 +1,10 @@
+<%= params %>
+<ul>
+<li><%= @vendor.name %></li>
+<li><%= @vendor.employees %></li>
+<li><%= @vendor.market_id %></li>
+
+</ul>
+
+<%= button_to "Edit", edit_vendor_path(@vendor), method: :get %>
+<%= button_to "Delete", destroy_vendor_path(@vendor), method: :delete, data: { confirm: "Are you sure?" } %>
