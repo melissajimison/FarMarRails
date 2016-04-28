@@ -22,13 +22,13 @@ class MarketsController < ApplicationController
   end
 
   def edit_market
-    @market = Market.find(params[:q])
+    @market = Market.find(params[:format])
   end
 
   def update_market
     @market = Market.find(params[:id])
     @market.update(markets_create_params)
-    redirect_to root_path
+    redirect_to markets
   end
 
   private
