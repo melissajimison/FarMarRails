@@ -22,7 +22,7 @@ class MarketsController < ApplicationController
   end
 
   def edit_market
-    @market = Market.find(params[:format])
+    @market = Market.find(params[:id])
   end
 
   def update_market

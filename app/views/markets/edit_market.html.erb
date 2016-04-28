@@ -4,7 +4,7 @@
 
 <div class="tittle"><h1>HI!! Let's <%= @market.name %> where id is <%= @market.id %>!</h1></div>
 <div class="form">
-<%= form_for @market, class: "main-form" do |f| %>
+<%= form_for @market, url: update_market  do |f| %>
 
 <%= f.label :name %>
 <%= f.text_field :name %>

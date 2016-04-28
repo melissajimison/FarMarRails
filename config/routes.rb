@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # resources :markets, only: [:index, :show]
   root 'application#index'
-  # get '/markets' => 'markets#index', as: 'markets'
+  get '/' => 'application#index'
   #
   get 'application/markets' => 'markets#index', as: 'markets'
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   get    'application/vendors/product/:id/edit' => 'products#edit', as: 'product_edit'
   patch  'application/vendors/product/:id'      => 'products#update', as: 'product_update'
-  
+
   delete 'application/vendors/product/:id'      => 'products#destroy', as: 'product_delete'
 
   get  'application/vendors/new'  => 'vendors#new'
