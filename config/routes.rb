@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get 'application/markets' => 'markets#index', as: 'markets'
 
 
-  post 'application/markets' => 'markets#create_market'
-  get  'application/markets/new'  => 'markets#new_market'
+  post 'application/markets' => 'markets#create'
+  get  'application/markets/new'  => 'markets#new', as: 'new_market'
 
   delete 'application/markets/:id' => 'markets#destroy_market'
 

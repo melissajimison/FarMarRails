@@ -3,11 +3,11 @@ class MarketsController < ApplicationController
 
   end
 
-  def new_market
+  def new
     @market = Market.new
   end
 
-  def create_market
+  def create
     @market = Market.new(market_create_params)
     if @market.save
       redirect_to application_path(@market.id)
