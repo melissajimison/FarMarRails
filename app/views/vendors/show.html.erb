@@ -25,7 +25,7 @@ Amount: <%= sale.amount %> <br>Product <%= Product.find(sale.product_id).name %>
 </li>
 <% end %>
 </ul>
-<h2><%=link_to "Add a Sale", product_new_path %></h2>
+<h2><%=link_to "Add a Sale", sale_new_path %></h2>
 
 
 <h2>Sum of All Sales</h2>

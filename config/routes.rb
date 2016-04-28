@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   delete 'application/vendors/product/:id'      => 'products#destroy', as: 'product_delete'
 
+  get 'application/vendors/sale/new' => 'sales#new', as: 'sale_new'
+  post   'application/vendors/sale/new'    => 'sales#create', as: 'sale_create'
 
 
 
