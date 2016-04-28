@@ -4,9 +4,10 @@ class ProductsController < ApplicationController
   end
 
   def update
+    product = Product.find(params[:id])
     # task = Task.find(params[:id])
-    # task.update_attributes(task_update_params[:task])
-    # redirect_to root_path
+    product.update_attributes(product_update_params[:product])
+    redirect_to vendor_path(product.vendor_id)
   end
 
   def delete
@@ -26,5 +27,15 @@ class ProductsController < ApplicationController
   def search
     @product = Product.where(id: params[:id]).first
     redirect_to @product
+  end
+
+  private
+  #tells us what parameters we want to use when we create an album
+  # def task_create_params
+  #   params.permit(task: [:name, :description, :person_id])
+  # end
+
+  def product_update_params
+    params.permit(product: [:name])
   end
 end
