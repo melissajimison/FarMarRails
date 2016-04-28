@@ -1,7 +1,7 @@
 <pre><%= params %></pre>
 
 
-<%= form_tag('/vendors/:id', method: :get) do %>
+<%= form_tag(search_vendor_path, method: :get) do %>
   <%= label_tag(:my_name, "My vendor id is:") %>
   <%= text_field_tag(:id) %>
   <%= submit_tag("Go!") %>
