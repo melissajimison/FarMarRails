@@ -17,23 +17,27 @@ class MarketsController < ApplicationController
     end
   end
 
-  def  search_market
+  def  search
     @markets = Market.find(params[:q])
   end
 
-  def edit_market
+  def edit
     @market = Market.find(params[:id])
   end
 
-  def update_market
+  def update
     @market = Market.find(params[:id])
-    @market.update(markets_create_params)
-    redirect_to markets
+    @market.update_attributes(market_update_params)
+    redirect_to root_path
   end
 
   private
 
   def market_create_params
+    params.require(:market).permit(:name, :city, :county, :state, :zip)
+  end
+
+  def market_update_params
     params.require(:market).permit(:name, :city, :county, :state, :zip)
   end
 

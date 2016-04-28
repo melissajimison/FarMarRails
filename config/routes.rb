@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
   # resources :markets, only: [:index, :show]
   root 'application#index'
-  get '/' => 'application#index'
-  #
+  get '/application' => 'application#index', as: 'applications'
   get 'application/markets' => 'markets#index', as: 'markets'
 
 
   post 'application/markets' => 'markets#create'
   get  'application/markets/new'  => 'markets#new', as: 'new_market'
 
-  delete 'application/markets/:id' => 'markets#destroy_market'
+  delete 'application/markets/:id' => 'markets#destroy', as: 'destroy_market'
 
-  get 'application/markets/search' => 'markets#search_market', as: 'search_market'
-  get 'application/markets/:id/edit' => 'markets#edit_market', as: 'edit_market'
-  patch 'application/markets/:id' => 'markets#update_market'
+  get 'application/markets/search' => 'markets#search', as: 'search_market'
+  get 'application/markets/:id/edit' => 'markets#edit', as: 'edit_market'
+  patch 'application/markets/:id' => 'markets#update', as: 'update_market'
 
 #################
 
