@@ -8,6 +8,6 @@ Market Name: <%=Market.where(id:@vendor.id).first.name%>
 <h2>Your Products</h2>
 <ul>
 <% @products.each do |product|%>
-	<li><%= product.name %></li>
+	<li><%= link_to product.name, product_path %></li>
 <% end %>
 </ul>
