@@ -38,14 +38,15 @@ Market Name: <%=Market.where(id:@vendor.id).first.name%>
 <%= @sales.inject(0) { |sum, sale| sum + sale.amount } %>
 
 <h2>Sales of the current month</h2>
-<% @sales.each do |sale| %>
-	<%  if sale.purchase_time.month == DateTime.now.month %>
-		<ul>
-			<li> Amount: <%= sale.amount %></li>
-			<li> Product <%= Product.find(sale.product_id).name %></li>
-			<li> Purchase Time <%= sale.purchase_time.strftime('%d-%m-%Y at %I:%M:%S %p') %></li>
-		</ul>
-	<% else %>
-		<%= "You do not have sales for the current month" %>
-	<% end %>
+
+<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == 11 } %>
+<%= "You do not have sales for the current month" if the_month_sales.empty? %>
+
+<% the_month_sales.each do |sale| %>
+<ul>
+	<li>Amount: <%= sale.amount %></li>
+
+	 <li>Product <%= Product.find(sale.product_id).name %></li>
+	 <li>Purchase Time <%= sale.purchase_time.strftime('%d-%m-%Y at %I:%M:%S %p') %></li>
+ </ul>
 <% end %>
