@@ -1,9 +1,15 @@
-<h1>All Markets</h1>
-<%= link_to "I am a market", markets_path%><br>
-<%= link_to "I am a vendor", vendors_path %>
 
+<nav>
+<ul>
+	<li class="button"><%= link_to "I am a market", markets_path%></li>
+	<li class="button"><%= link_to "I am a vendor", vendors_path %></li>
+</ul>
+</nav>
+
+<main>
 <ul>
 	<% @markets.each do |market| %>
 		<li><%= link_to market.name, application_path(market.id) %> </li>
 	<% end %>
 </ul>
+</main>
