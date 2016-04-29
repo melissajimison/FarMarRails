@@ -22,7 +22,7 @@ class VendorsController < ApplicationController
   def create
     @vendor = Vendor.new(vendor_create_params)
     if @vendor.save
-      redirect_to root_path
+      redirect_to vendor_path(@vendor.id)
     else
       # @artist = Artist.select(:id, :name).order(:name)
       # render :index
