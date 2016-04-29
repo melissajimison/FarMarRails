@@ -24,7 +24,7 @@ main li {
 	line-height: 30px;
 }
 
-main li:hover {
+main .main-list:hover {
 	background-color: gray;
 }
 
@@ -42,6 +42,7 @@ a {
 	margin: 5px;
 	margin-right: auto;
 	margin-left: auto;
+/*	border-radius: 10px;*/
 
 }
 
@@ -51,10 +52,11 @@ main {
 	margin-left: auto;
 	margin-right: auto;
 	background-color: white;
-	padding-top: 7px;
+	padding-top: 15px;
 	padding-right: 30px;
 	padding-left: 10px;
 	padding-bottom: 15px;
+	overflow: auto;
 }
 
 .list {
@@ -73,4 +75,19 @@ h3 {
 
 .vendor-list {
 	margin-top: 10px;
+}
+
+.product-list-ul {
+	display: inline-block;
+}
+
+.product-list {
+	float:left;
+	padding: 10px;
+}
+
+.columns {
+	width: 50%;
+	float: left;
+	margin-top: 20px;
 }

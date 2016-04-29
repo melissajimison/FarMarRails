@@ -29,7 +29,6 @@ class VendorsController < ApplicationController
     end
   end
 
-
   def searchasmark
     @vendor = Vendor.find(params[:q])
   end
@@ -47,7 +46,7 @@ class VendorsController < ApplicationController
   def destroy
     @vendor = Vendor.find(params[:id])
     @vendor.destroy
-    redirect_to vendor_path
+    redirect_to market_path(@vendor)
   end
 
   private

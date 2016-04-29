@@ -1,17 +1,13 @@
-<pre><%= params %></pre>
-
 <ul>
-<li>
-<%= link_to "Add New Market", new_market_path %>
-</li>
-<li>
-<%= link_to "Add New vendor", new_vendor_path %>
-</li>
+	<li class="button">
+		<%= link_to "Add New Market", new_market_path %>
+	</li>
+	<li class="button">
+		<%= link_to "Add New vendor", new_vendor_path %>
+	</li>
 </ul>
 
-<br>
-<br>
-<br>
+<main>
 
 <%= form_tag(search_market_path, method: "get") do %>
   <%= label_tag(:q, "Search Market with ID:") %>
@@ -28,3 +24,4 @@
 <%= text_field_tag :q, "Enter Vendor ID" %>
   <%= submit_tag("Search") %>
 <% end %>
+</main>

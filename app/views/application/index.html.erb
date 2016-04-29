@@ -1,4 +1,3 @@
-
 <nav>
 <ul>
 	<li class="button"><%= link_to "I am a market", markets_path%></li>
@@ -7,9 +6,9 @@
 </nav>
 
 <main>
-<ul>
-	<% @markets.each do |market| %>
-		<li><%= link_to market.name, application_path(market.id) %> </li>
-	<% end %>
-</ul>
+	<ul>
+		<% @markets.each do |market| %>
+			<li class="main-list"><%= link_to market.name, application_path(market.id) %> </li>
+		<% end %>
+	</ul>
 </main>

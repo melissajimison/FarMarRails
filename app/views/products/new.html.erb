@@ -1,15 +1,11 @@
-<pre><%= params %></pre>
-<pre><%= @product.class %></pre>
-
-
-<%= form_for @product, url: product_new_path do |f| %>
-
-
-<table>
-Product Name:	<td><%= f.label :name %>
-  <%= f.text_field :name %></td>
-Vendor ID:  <td><%= f.label :vendor_id %>
-  <%= f.text_field :vendor_id %></td>
-  <td><%= f.submit %></td>
-<% end %>
-</table>
+<main>
+	<%= form_for @product, url: product_new_path do |f| %>
+	<ul>
+		<li><%= f.label :name %>
+		  <%= f.text_field :name %>
+			<%= f.label :vendor_id %>
+		  <%= f.text_field :vendor_id %>
+		  <%= f.submit %></li>
+		<% end %>
+	</ul>
+</main>

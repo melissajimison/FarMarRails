@@ -1,24 +1,27 @@
-<%if @vendor.errors.any?%>
-<ul class="errors">
+<main>
+	<h2>Add a New Vendor</h2>
+	<%if @vendor.errors.any?%>
+	<ul class="errors">
 
-<% @vendor.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+	<% @vendor.errors.each do |column, message| %>
+	      <li>
+	        <strong><%= column.capitalize %></strong> <%= message %>
+	      </li>
+	    <% end %>
+	  </ul>
+	<% end %>
 
-<%= form_for @vendor do |f| %>
+	<%= form_for @vendor do |f| %>
 
-<%= f.label :name %>
-<%= f.text_field :name %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
 
-<%= f.label :employees %>
-<%= f.text_field :employees %>
+	<%= f.label :employees %>
+	<%= f.text_field :employees %>
 
-<%= f.label :market_id %>
-<%= f.text_field :market_id %>
+	<%= f.label :market_id %>
+	<%= f.text_field :market_id %>
 
-<%= f.submit %>
-<% end %>
+	<%= f.submit %>
+	<% end %>
+</main>

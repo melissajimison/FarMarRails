@@ -1,19 +1,16 @@
-<pre><%= params %></pre>
-<pre><%= @sale.class %></pre>
-
-
-<%= form_for @sale, url: sale_new_path do |f| %>
-
-
-<table>
-<td>Amount:	<%= f.label :amount %>
-  <%= f.text_field :amount %></td>
-<td>Vendor ID:  <%= f.label :vendor_id %>
-  <%= f.text_field :vendor_id %></td>
-<td>Product ID:  <%= f.label :product_id %>
-  <%= f.text_field :product_id %></td>
-<td>Purchase Time:  <%= f.label :purchase_time %>
-  <%= f.text_field :purchase_time %></td>
-  <td><%= f.submit %></td>
-<% end %>
-</table>
+<main>
+	<h2>Add a New Sale</h2>
+	<%= form_for @sale, url: sale_new_path do |f| %>
+	<table>
+		<td><%= f.label :amount %>
+		  <%= f.text_field :amount %></td>
+		<td><%= f.label :vendor_id %>
+		  <%= f.text_field :vendor_id %></td>
+		<td><%= f.label :product_id %>
+		  <%= f.text_field :product_id %></td>
+		<td><%= f.label :purchase_time %>
+		  <%= f.text_field :purchase_time %></td>
+		  <td><%= f.submit %></td>
+		<% end %>
+	</table>
+</main>
