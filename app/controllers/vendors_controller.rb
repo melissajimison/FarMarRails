@@ -29,9 +29,29 @@ class VendorsController < ApplicationController
     end
   end
 
+
+  def searchasmark
+    @vendor = Vendor.find(params[:q])
+  end
+
+  def edit
+    @vendor = Vendor.find(params[:id])
+  end
+
+  def update
+    @vendor = Vendor.find(params[:id])
+    @vendor.update_attributes(vendor_update_params)
+    redirect_to vendor_path
+  end
+
+
   private
 
   def vendor_create_params
+    params.require(:vendor).permit(:name, :employees, :market_id)
+  end
+
+  def vendor_update_params
     params.require(:vendor).permit(:name, :employees, :market_id)
   end
 

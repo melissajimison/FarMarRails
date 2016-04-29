@@ -14,18 +14,19 @@ Rails.application.routes.draw do
   get 'application/markets/:id/edit' => 'markets#edit', as: 'edit_market'
   patch 'application/markets/:id' => 'markets#update', as: 'update_market'
 
+  get 'application/vendors/searchasmark' => 'vendors#searchasmark', as: 'vendor_search'
 #################
 
   get 'application/vendors' => 'vendors#index', as: 'vendors'
 
 
   post 'application/vendors' => 'vendors#create'
-  get  'application/vendors/new'  => 'vendors#new', as: 'vendor_new'
+  get  'application/vendors/new'  => 'vendors#new', as: 'new_vendor'
   get 'application/vendors/search' => 'vendors#search', as: 'search_vendor'
 
-  delete 'application/vendors/:id' => 'vendors#destroy'
+  delete 'application/vendors/:id' => 'vendors#destroy', as: 'destroy_vendor'
   get 'application/vendors/:id/edit' => 'vendors#edit', as: 'edit_vendor'
-  patch 'application/vendors/:id' => 'vendors#update'
+  patch 'application/vendors/:id' => 'vendors#update', as: 'update_vendor'
   get 'application/vendors/:id' => 'vendors#show', as: 'vendor'
 
   get 'application/vendors/product/new' => 'products#new', as: 'product_new'

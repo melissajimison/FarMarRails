@@ -1,0 +1,26 @@
+
+<%=params%>
+
+
+<div class="tittle"><h1>HI!! Let's <%= @vendor.name %> where id is <%= @vendor.id %>!</h1></div>
+<div class="form">
+<%= form_for @vendor, url: update_vendor_path(@vendor.id) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+<br>
+<br>
+<%= f.label :employees %>
+<%= f.text_field :employees %>
+<br>
+<br>
+<%= f.label :market_id %>
+<%= f.text_field :market_id %>
+<br>
+
+<br>
+<br>
+<%= f.submit('Save') %>
+<% end %>
+
+</div>
