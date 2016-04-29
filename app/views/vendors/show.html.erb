@@ -39,7 +39,7 @@ Market Name: <%=Market.where(id:@vendor.id).first.name%>
 
 <h2>Sales of the current month</h2>
 
-<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == 11 } %>
+<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == DateTime.now } %>
 <%= "You do not have sales for the current month" if the_month_sales.empty? %>
 
 <% the_month_sales.each do |sale| %>
