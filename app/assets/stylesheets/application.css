@@ -1,15 +1,93 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+html {
+	font-size: 16px;
+	text-align: center;
+	font-family: sans-serif;
+}
+
+body {
+	background-color: #D3D3D3;
+}
+
+h1 {
+	padding-top: 40px;
+	font-size: 3rem;
+
+}
+
+header {
+	height: 150px;
+	background-color: gray;
+}
+
+main li {
+	list-style: none;
+	line-height: 30px;
+}
+
+main .main-list:hover {
+	background-color: gray;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+
+.button {
+	background-color: red;
+	width: 10%;
+	display: inline-block;
+	padding: 10px;
+	margin: 5px;
+	margin-right: auto;
+	margin-left: auto;
+/*	border-radius: 10px;*/
+
+}
+
+main {
+	clear: both;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: white;
+	padding-top: 15px;
+	padding-right: 30px;
+	padding-left: 10px;
+	padding-bottom: 15px;
+	overflow: auto;
+}
+
+.list {
+	background-color: #C0C0C0;
+	width: 40%;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 10px;
+}
+
+h3 {
+	background-color: gray;
+	color: white;
+	padding: 7px;
+}
+
+.vendor-list {
+	margin-top: 10px;
+}
+
+.product-list-ul {
+	display: inline-block;
+}
+
+.product-list {
+	float:left;
+	padding: 10px;
+}
+
+.columns {
+	width: 50%;
+	float: left;
+	margin-top: 20px;
+}

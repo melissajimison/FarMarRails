@@ -1,37 +1,35 @@
+<main>
+	<div class="tittle"><h2>Edit <%= @market.name %> </h2></div>
+	<div class="form">
+	<%= form_for @market do |f| %>
 
-<%=params%>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<br>
+	<br>
+	<%= f.label :address %>
+	<%= f.text_field :address %>
+	<br>
+	<br>
+	<%= f.label :city %>
+	<%= f.text_field :city %>
+	<br>
+	<br>
+	<%= f.label :county %>
+	<%= f.text_field :county %>
+	<br>
+	<br>
+	<%= f.label :state %>
+	<%= f.text_field :state %>
+	<br>
+	<br>
+	<%= f.label :zip %>
+	<%= f.text_field :zip %>
 
+	<br>
+	<br>
+	<%= f.submit('Save') %>
+	<% end %>
 
-<div class="tittle"><h1>HI!! Let's <%= @market.name %> where id is <%= @market.id %>!</h1></div>
-<div class="form">
-<%= form_for @market do |f| %>
-
-<%= f.label :name %>
-<%= f.text_field :name %>
-<br>
-<br>
-<%= f.label :address %>
-<%= f.text_field :address %>
-<br>
-<br>
-<%= f.label :city %>
-<%= f.text_field :city %>
-<br>
-<br>
-<%= f.label :county %>
-<%= f.text_field :county %>
-<br>
-<br>
-<%= f.label :state %>
-<%= f.text_field :state %>
-<br>
-<br>
-<%= f.label :zip %>
-<%= f.text_field :zip %>
-
-<br>
-<br>
-<%= f.submit('Save') %>
-<% end %>
-
-</div>
+	</div>
+</main>

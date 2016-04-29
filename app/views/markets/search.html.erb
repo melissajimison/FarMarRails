@@ -1,12 +1,12 @@
-<%= params %>
-<ul>
-<li><%= @markets.name %></li>
-<li><%= @markets.address %></li>
-<li><%= @markets.city %></li>
-<li><%= @markets.county %></li>
-<li><%= @markets.state %></li>
-<li><%= @markets.zip %></li>
-</ul>
-
-<%= button_to "Edit", edit_market_path(@markets), method: :get %>
-<%= button_to "Delete", @markets, method: :delete, data: { confirm: "Are you sure?" } %>
+<main>
+	<ul class="product-list-ul">
+		<li><h2><%= @markets.name %></h2></li>
+		<li><%= @markets.address %></li>
+		<li><%= @markets.city %></li>
+		<li><%= @markets.county %></li>
+		<li><%= @markets.state %></li>
+		<li><%= @markets.zip %></li>
+		<li class="product-list"><%= button_to "Edit", edit_market_path(@markets), method: :get %></li>
+		<li class="product-list"><%= button_to "Delete", @markets, method: :delete, data: { confirm: "Are you sure?" } %></li>
+	</ul>
+</main>

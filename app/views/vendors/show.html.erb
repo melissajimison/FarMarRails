@@ -1,47 +1,48 @@
-<pre><%= params %></pre>
+<main>
+	<div>
+		Vendor name: <%=@vendor.name%><br>
+		Number of Employees: <%=@vendor.employees%><br>
+		Market Name: <%=Market.find(@vendor.market_id).name%>
+	</div>
+<article class="columns">
+	<h2>Your Products</h2>
+	<% @products.each do |product|%>
+	<ul class="product-list-ul">
+		<li class="product-list"><%= link_to product.name, product_path(product.id) %></li>
+		<li class="product-list"><%= button_to "Edit", product_edit_path, :method => :get, params: {product_id: product.id} %></li>
+		<li class="product-list"><%= button_to "Delete", product_delete_path, :method => :delete,  data: { confirm: "Are you sure?" }, params: {product_id: product.id} %></li>
+	</ul><br>
+		<% end %>
+	<h4 class="button"><%=link_to "Add Product", product_new_path %></h4>
+</article>
 
-Vendor name: <%=@vendor.name%><br>
-Number of Employees: <%=@vendor.employees%><br>
-Market Name: <%= Market.find(@vendor.market_id).name%>
-<h2><%=link_to "Add a Product", product_new_path %></h2>
 
-<h2>Your Products</h2>
-<ul>
-<% @products.each do |product|%>
-<li><%= link_to product.name, product_path(product.id) %>
+<article class="columns">
+	<h2>Your Sales</h2>
+	<ul>
+		<% @sales.each do |sale|%>
+		<li>
+			Amount: <%= sale.amount %> <br>Product <%= Product.find(sale.product_id).name %>
+		</li>
+		<% end %>
+	</ul>
+	<h4 class="button"><%=link_to "Add Sale", sale_new_path %></h4>
 
-	<%= button_to "Edit", product_edit_path, :method => :get, params: {product_id: product.id} %>
+	<h2>Sum of All Sales</h2>
+	<%= @sales.inject(0) { |sum, sale| sum + sale.amount } %>
 
+	<h2>Sales of the current month</h2>
 
-	<%= button_to "Delete", product_delete_path, :method => :delete,  data: { confirm: "Are you sure?" }, params: {product_id: product.id} %></li>
+	<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == DateTime.now.month } %>
+	<%= "You do not have sales for the current month" if the_month_sales.empty? %>
+
+	<% the_month_sales.each do |sale| %>
+	<ul>
+		<li>Amount: <%= sale.amount %></li>
+
+		 <li>Product <%= Product.find(sale.product_id).name %></li>
+		 <li>Purchase Time <%= sale.purchase_time.strftime('%d-%m-%Y at %I:%M:%S %p') %></li>
+	 </ul>
 	<% end %>
-</ul>
-
-<h2>Your Sales</h2>
-<ul>
-<% @sales.each do |sale|%>
-<li>
-	Amount: <%= sale.amount %> <br>Product <%= Product.find(sale.product_id).name %><br>Purchase Time <%= sale.purchase_time.month %>
-</li>
-<% end %>
-</ul>
-<h2><%=link_to "Add a Sale", sale_new_path %></h2>
-
-
-<h2>Sum of All Sales</h2>
-
-<%= @sales.inject(0) { |sum, sale| sum + sale.amount } %>
-
-<h2>Sales of the current month</h2>
-
-<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == DateTime.now.month } %>
-<%= "You do not have sales for the current month" if the_month_sales.empty? %>
-
-<% the_month_sales.each do |sale| %>
-<ul>
-	<li>Amount: <%= sale.amount %></li>
-
-	 <li>Product <%= Product.find(sale.product_id).name %></li>
-	 <li>Purchase Time <%= sale.purchase_time.strftime('%d-%m-%Y at %I:%M:%S %p') %></li>
- </ul>
-<% end %>
+</article>
+</main>

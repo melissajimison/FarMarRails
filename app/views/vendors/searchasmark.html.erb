@@ -1,10 +1,9 @@
-<%= params %>
-<ul>
-<li><%= @vendor.name %></li>
-<li><%= @vendor.employees %></li>
-<li><%= @vendor.market_id %></li>
-
-</ul>
-
-<%= button_to "Edit", edit_vendor_path(@vendor), method: :get %>
-<%= button_to "Delete", destroy_vendor_path(@vendor), method: :delete, data: { confirm: "Are you sure?" } %>
+<main>
+	<ul class="product-list-ul">
+		<li>Name: <%= @vendor.name %></li>
+		<li>No. Employees: <%= @vendor.employees %></li>
+		<li>Market Name: <%= Market.find(@vendor).name %></li>
+		<li class="product-list"><%= button_to "Edit", edit_vendor_path(@vendor), method: :get %></li>
+		<li class="product-list"><%= button_to "Delete", destroy_vendor_path(@vendor), method: :delete, data: { confirm: "Are you sure?" } %></li>
+	</ul>
+</main>

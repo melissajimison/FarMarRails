@@ -1,16 +1,19 @@
-<h1><%= @market.name %> info</h1>
-<ul>
-	<li>Name: <%= @market.name %></li>
-	<li>Address: <%= @market.address %></li>
-	<li>City: <%= @market.city %></li>
-	<li>County: <%= @market.county %></li>
-	<li>State: <%= @market.state %></li>
-	<li>Zip: <%= @market.zip %></li>
-</ul>
-
-<h2>List of vendors</h2>
-<ul>
-<% @vendors.each do |vendor|%>
-	<li><%= vendor.name %>:<%= vendor.employees %>,  <%= vendor.market_id %></li>
-<% end %>
-</ul>
+<main>
+	<h2><%= @market.name %> info</h2>
+	<ul>
+		<li>Name: <%= @market.name %></li>
+		<li>Address: <%= @market.address %></li>
+		<li>City: <%= @market.city %></li>
+		<li>County: <%= @market.county %></li>
+		<li>State: <%= @market.state %></li>
+		<li>Zip: <%= @market.zip %></li>
+	</ul>
+	<div class="list">
+		<h3>List of vendors</h3>
+		<ul>
+		<% @vendors.each do |vendor|%>
+			<li class="vendor-list">Name: <%= vendor.name %>, No. Employees: <%= vendor.employees %></li>
+		<% end %>
+		</ul>
+	</div>
+</main>

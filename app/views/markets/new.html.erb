@@ -1,34 +1,38 @@
-<%if @market.errors.any?%>
-<ul class="errors">
 
-<% @market.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<main>
+	<h2>Add a New Market</h2>
+	<%if @market.errors.any?%>
+	<ul class="errors">
 
-<%= form_for @market do |f| %>
+	<% @market.errors.each do |column, message| %>
+	      <li>
+	        <strong><%= column.capitalize %></strong> <%= message %>
+	      </li>
+	    <% end %>
+	  </ul>
+	<% end %>
 
-<%= f.label :name %>
-<%= f.text_field :name %>
+	<%= form_for @market do |f| %>
 
-<%= f.label :address %>
-<%= f.text_field :address %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
 
-<%= f.label :city %>
-<%= f.text_field :city %>
+	<%= f.label :address %>
+	<%= f.text_field :address %>
 
-<%= f.label :county %>
-<%= f.text_field :county %>
+	<%= f.label :city %>
+	<%= f.text_field :city %>
 
-<%= f.label :state %>
-<%= f.text_field :state %>
+	<%= f.label :county %>
+	<%= f.text_field :county %>
 
-<%= f.label :zip %>
-<%= f.text_field :zip %>
+	<%= f.label :state %>
+	<%= f.text_field :state %>
+
+	<%= f.label :zip %>
+	<%= f.text_field :zip %>
 
 
-<%= f.submit %>
-<% end %>
+	<%= f.submit %>
+	<% end %>
+</main>
