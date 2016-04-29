@@ -2,7 +2,7 @@
 
 Vendor name: <%=@vendor.name%><br>
 Number of Employees: <%=@vendor.employees%><br>
-Market Name: <%=Market.where(id:@vendor.id).first.name%>
+Market Name: <%= Market.find(@vendor.market_id).name%>
 <h2><%=link_to "Add a Product", product_new_path %></h2>
 
 <h2>Your Products</h2>
@@ -29,17 +29,12 @@ Market Name: <%=Market.where(id:@vendor.id).first.name%>
 
 
 <h2>Sum of All Sales</h2>
-<%sum = 0 %>
-<% @sales.each do |sale| %>
-	<% sum += sale.amount %>
-<% end %>
-<%= sum %>
 
 <%= @sales.inject(0) { |sum, sale| sum + sale.amount } %>
 
 <h2>Sales of the current month</h2>
 
-<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == DateTime.now } %>
+<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == DateTime.now.month } %>
 <%= "You do not have sales for the current month" if the_month_sales.empty? %>
 
 <% the_month_sales.each do |sale| %>
