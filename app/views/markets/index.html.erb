@@ -11,7 +11,7 @@
 
 <%= form_tag(search_market_path, method: "get") do %>
   <%= label_tag(:q, "Search Market with ID:") %>
-<%= text_field_tag :q, "Enter Market ID" %>
+<%= text_field_tag :q %>
   <%= submit_tag("Search") %>
 <% end %>
 
@@ -21,7 +21,7 @@
 
 <%= form_tag(vendor_search_path, method: "get") do %>
   <%= label_tag(:q, "Search Vendor with ID:") %>
-<%= text_field_tag :q, "Enter Vendor ID" %>
+<%= text_field_tag :q %>
   <%= submit_tag("Search") %>
 <% end %>
 </main>
