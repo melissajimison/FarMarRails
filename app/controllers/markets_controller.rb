@@ -15,16 +15,18 @@ class MarketsController < ApplicationController
   end
 
   def show
-    if params[:q]
-      if Market.where(id: params[:q]) == []
-        flash[:error] = "We are sorry, but we could not find the market with id #{params[:q]} in our database"
-        redirect_to markets_path
-      else
-        @market = Market.find(params[:q])
-      end
+    @market = Market.find(params[:id])
+    @vendors = @market.vendors
+
+  end
+
+  def search
+    if Market.where(id: params[:id]) == []
+      flash[:error] = "We are sorry, but we could not find the market with id #{params[:q]} in our database"
+      redirect_to markets_path
     else
       @market = Market.find(params[:id])
-      @vendors = @market.vendors
+      redirect_to @market
     end
   end
 

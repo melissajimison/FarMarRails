@@ -1,6 +1,7 @@
 class SalesController < ApplicationController
   def new
     @sale = Sale.new
+    @vendor = Vendor.find(params[:vendor_id])
   end
 
   def create

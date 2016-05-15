@@ -2,12 +2,13 @@
 	<div>
 		Vendor name: <%=@vendor.name%><br>
 		Number of Employees: <%=@vendor.employees%><br>
-		Market Name: <%=@vendor.market.name%>
+		Market Name: <%=@market.name%>
 	</div>
 <article class="columns">
 	<h2>Your Products</h2>
 	<% @products.each do |product|%>
 	<ul class="product-list-ul">
+		<li class="product-list"><%= product.id %></li>
 		<li class="product-list"><%= link_to product.name, vendor_product_path(@vendor, product) %></li>
 		<li class="product-list"><%= button_to "Edit", edit_vendor_product_path(@vendor, product), method: :get, params: {product_id: product.id} %></li>
 		<li class="product-list"><%= button_to "Delete", vendor_product_path(@vendor, product), method: :delete,  data: { confirm: "Are you sure?" }, params: {product_id: product.id} %></li>
@@ -16,33 +17,51 @@
 	<h4 class="button"><%=link_to "Add Product", new_vendor_product_path(@vendor) %></h4>
 </article>
 
-
 <article class="columns">
 	<h2>Your Sales</h2>
-	<ul>
+	<table>
+		<th>
+			<td><strong>Amount</strong></td>
+			<td><strong>Product</strong></td>
+			<td><strong>Product ID</strong></td>
+
+		</th>
 		<% @sales.each do |sale|%>
-		<li>
-			Amount: <%= sale.amount %> <br>Product <%= Product.find(sale.product_id).name %>
-		</li>
+		<tr>
+			<td></td>
+				<td><%= sale.amount %></td>
+			  <td><%= sale.product ? sale.product.name : "This product has been deleted" %> </td>
+				<td><%= sale.product ? sale.product.id : "none"%></td>
+			</tr>
 		<% end %>
-	</ul>
-	<h4 class="button"><%=link_to "Add Sale", sale_new_path %></h4>
+	</table>
 
-	<h2>Sum of All Sales</h2>
-	<%= @sales.inject(0) { |sum, sale| sum + sale.amount } %>
+	<h4 class="button"><%=link_to "Add Sale", new_vendor_sale_path(@vendor) %></h4>
 
-	<h2>Sales of the current month</h2>
+		<h2>Sum of All Sales</h2>
+		<%= @sales.inject(0) { |sum, sale| sum + sale.amount } %>
 
-	<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == DateTime.now.month } %>
-	<%= "You do not have sales for the current month" if the_month_sales.empty? %>
+		<h2>Sales of the current month</h2>
 
-	<% the_month_sales.each do |sale| %>
-	<ul>
-		<li>Amount: <%= sale.amount %></li>
+		<% the_month_sales = @sales.select { |sale| sale.purchase_time.month == DateTime.now.month } %>
+		<%= "You do not have sales for the current month" if the_month_sales.empty? %>
 
-		 <li>Product <%= Product.find(sale.product_id).name %></li>
-		 <li>Purchase Time <%= sale.purchase_time.strftime('%d-%m-%Y at %I:%M:%S %p') %></li>
-	 </ul>
-	<% end %>
+		<table>
+			<th>
+				<td><strong>Amount</strong></td>
+				<td><strong>Product</strong></td>
+				<td><strong>Purchase Time</strong></td>
+			</th>
+			<% the_month_sales.each do |sale| %>
+			<tr>
+				<td></td>
+				<td><%= sale.amount %></td>
+				<td><%= sale.product ? sale.product.name : "This product has been deleted" %></td>
+				<td><%= sale.purchase_time.strftime('%d-%m-%Y at %I:%M:%S %p') %></td>
+		 </tr>
+		 <% end %>
+		 </table>
+
 </article>
+
 </main>

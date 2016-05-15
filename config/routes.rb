@@ -4,20 +4,20 @@ Rails.application.routes.draw do
   get '/welcome' => 'welcome#index', as: 'welcome'
   get '/welcome/:id' => 'welcome#show', as: 'marketinfo'
 
+  get '/markets/search' => 'markets#search', as: 'search_market'
+  get '/vendors/search' => 'vendors#search', as: 'search_vendor'
+
   resources :markets
   #################
 
-  get '/vendors/search' => 'vendors#search', as: 'search_vendor'
 
   get 'application/vendors/product/search' => 'products#search', as: 'search_product'
-
-
-  get 'application/vendors/sale/new' => 'sales#new', as: 'sale_new'
-  post   'application/vendors/sale/new'    => 'sales#create', as: 'sale_create'
 
   ###############
   resources :vendors do
     resources :products
+    resources :sales, :only => [:new, :create]
+
   end
 
 end

@@ -5,15 +5,19 @@ class VendorsController < ApplicationController
   end
 
   def show
-    @vendor = Vendor.find(params[:id])
-    @products = Product.where(vendor_id: params[:id])
-    @sales = Sale.where(vendor_id: params[:id])
-    @market = Market.find(@vendor.market_id)
-
+    if Vendor.where(id: params[:id]) == []
+      flash[:error] = "We are sorry, but we could not find the market with id #{params[:q]} in our database"
+      redirect_to vendors_path
+    else
+      @vendor = Vendor.find(params[:id])
+      @products = @vendor.products
+      @sales = Sale.where(vendor_id: @vendor.id)
+      @market = @vendor.market
+    end
   end
 
   def search
-    @vendor = Vendor.where(id: params[:id]).first
+    @vendor = Vendor.find(params[:id])
     redirect_to @vendor
   end
 
