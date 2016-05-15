@@ -1,15 +1,8 @@
-<h1>Welcome to FarMar</h1>
-<nav>
-<ul>
-	<li class="button"><%= link_to "I am a market", markets_path%></li>
-	<li class="button"><%= link_to "I am a vendor", vendors_path %></li>
-</ul>
-</nav>
 
 <main>
 	<ul>
 		<% @markets.each do |market| %>
-			<li class="main-list"><%= link_to market.name, market_path(market) %> </li>
+			<li class="main-list"><%= link_to market.id, market_path(market) %> </li>
 		<% end %>
 	</ul>
 </main>

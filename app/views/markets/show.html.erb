@@ -1,4 +1,10 @@
 <main>
+	<% if @user.errors.any? %>
+	    <% @user.errors.each do |column, message| %>
+	      <%  flash.now[:error] = "#{column.capitalize}: #{message} "%>
+	    <% end %>
+	<% end %>
+
 	<ul class="product-list-ul">
 		<li><h2><%= @market.name %></h2></li>
 		<li><%= @market.address %></li>
@@ -9,6 +15,4 @@
 		<li class="product-list"><%= button_to "Edit", edit_market_path(@market), method: :get %></li>
 		<li class="product-list"><%= button_to "Delete", @market, method: :delete, data: { confirm: "Are you sure?" } %></li>
 	</ul>
-
-	<%=params%>
 </main>

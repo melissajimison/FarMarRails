@@ -2,14 +2,27 @@
 <html>
 	<head>
 	  <title>FarMarRails</title>
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 	  <%= csrf_meta_tags %>
 	</head>
 	<body>
 		<header>
-			<h1>FarMar</h1>
-		</header>
+		<nav>
+		<ul class="navig">
+			<li class="logo"><h1><%= link_to "FarMar", root_path%></h1></li>
+			<li class="button"><%= link_to "I am a market", markets_path%></li>
+			<li class="button"><%= link_to "I am a vendor", vendors_path %></li>
+		</ul>
+		</nav>
+	</header>
+		<%=params%>
+
+		<% if flash[:error] -%>
+		<div class="alert alert-danger" role="alert">
+			<p class='error'><%=h flash[:error] %></p>
+		</div>
+		<% end %>
 
 	<%= yield %>
 

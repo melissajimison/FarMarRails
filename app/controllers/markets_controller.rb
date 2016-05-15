@@ -15,10 +15,19 @@ class MarketsController < ApplicationController
   end
 
   def show
-    if params[:q]
-      @market = Market.find(params[:q])
-    else
-      @market = Market.find(params[:id])
+
+    begin
+      if params[:q]
+        @market = Market.find(params[:q])
+      else
+        @market = Market.find(params[:id])
+      end
+
+    rescue ActiveRecord::RecordNotFound
+     flash[:error] = "That Market does not exist"
+     redirect_to markets_path
+
+     return
     end
   end
 
