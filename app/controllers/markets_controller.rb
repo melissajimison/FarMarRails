@@ -24,6 +24,7 @@ class MarketsController < ApplicationController
       end
     else
       @market = Market.find(params[:id])
+      @vendors = @market.vendors
     end
   end
 

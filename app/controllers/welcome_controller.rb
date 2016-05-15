@@ -5,8 +5,7 @@ class WelcomeController < ApplicationController
 
   def show
     @market = Market.find(params[:id])
-    @vendors = Vendor.where(market_id: @market.id)
+    @vendors = @market.vendors
   end
 
-  protect_from_forgery with: :exception
 end

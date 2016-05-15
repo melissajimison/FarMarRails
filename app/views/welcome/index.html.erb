@@ -2,7 +2,7 @@
 <main>
 	<ul>
 		<% @markets.each do |market| %>
-			<li class="main-list"><%= link_to market.id, market_path(market) %> </li>
+			<li class="main-list"><%= link_to market.id, marketinfo_path(market) %> </li>
 		<% end %>
 	</ul>
 </main>

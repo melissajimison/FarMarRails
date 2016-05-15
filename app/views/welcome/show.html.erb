@@ -1,13 +1,17 @@
 <main>
-	<h2><%= @market.name %> info</h2>
-	<ul>
-		<li>Name: <%= @market.id %></li>
-		<li><strong>Name: <%= @market.name %></strong></li>
-		<li>Address: <%= @market.address %></li>
-		<li>City: <%= @market.city %></li>
-		<li>County: <%= @market.county %></li>
-		<li>State: <%= @market.state %></li>
-		<li>Zip: <%= @market.zip %></li>
+	<% if @market.errors.any? %>
+	    <% @market.errors.each do |column, message| %>
+	      <%  flash[:error] = "#{column.capitalize}: #{message} "%>
+	    <% end %>
+	<% end %>
+
+	<ul class="product-list-ul">
+		<li><h2><%= @market.name %></h2></li>
+		<li><%= @market.address %></li>
+		<li><%= @market.city %></li>
+		<li><%= @market.county %></li>
+		<li><%= @market.state %></li>
+		<li><%= @market.zip %></li>
 	</ul>
 	<div class="list">
 		<h3>List of vendors</h3>
