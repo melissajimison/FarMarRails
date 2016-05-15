@@ -1,37 +1,33 @@
-<main>
-	<div class="tittle"><h2>Edit <%= @market.name %> </h2></div>
+<div class="form">
 
-		<%= render partial: "form", locals: { zone: @market } %>
-
-	<!-- <%= form_for @market do |f| %>
+<%= form_for(zone) do |f| %>
 
 	<%= f.label :name %>
 	<%= f.text_field :name %>
-	<br>
-	<br>
+  <br>
+  <br>
+
 	<%= f.label :address %>
 	<%= f.text_field :address %>
-	<br>
-	<br>
+  <br>
+  <br>
+
 	<%= f.label :city %>
 	<%= f.text_field :city %>
-	<br>
-	<br>
+  <br><br>
+
 	<%= f.label :county %>
 	<%= f.text_field :county %>
-	<br>
-	<br>
+  <br><br>
+
 	<%= f.label :state %>
 	<%= f.text_field :state %>
-	<br>
-	<br>
+  <br><br>
+
 	<%= f.label :zip %>
 	<%= f.text_field :zip %>
-
-	<br>
-	<br>
-	<%= f.submit('Save') %>
+  <br>
+  <br>
+	<%= f.submit %>
 	<% end %>
--->
-	</div>
-</main>
+</div>

@@ -9,7 +9,7 @@
 
 <main>
 
-<%= form_tag(search_market_path, method: "get") do %>
+<%= form_tag(market_path(:q), method: "get") do %>
   <%= label_tag(:q, "Search Market with ID:") %>
 <%= text_field_tag :q %>
   <%= submit_tag("Search") %>

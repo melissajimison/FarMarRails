@@ -12,7 +12,11 @@
 	  </ul>
 	<% end %>
 
-	<%= form_for @market do |f| %>
+
+	<%= render partial: "form", locals: { zone: @market } %>
+
+
+	<!-- <%= form_for @market do |f| %>
 
 	<%= f.label :name %>
 	<%= f.text_field :name %>
@@ -34,5 +38,5 @@
 
 
 	<%= f.submit %>
-	<% end %>
+	<% end %> -->
 </main>

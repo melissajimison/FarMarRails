@@ -1,7 +1,5 @@
 class MarketsController < ApplicationController
-  def index
-
-  end
+  def index; end
 
   def new
     @market = Market.new
@@ -10,15 +8,18 @@ class MarketsController < ApplicationController
   def create
     @market = Market.new(market_create_params)
     if @market.save
-      redirect_to application_path(@market.id)
+      redirect_to market_path(@market.id)
     else
-      # @artist = Artist.select(:id, :name).order(:name)
-      # render :index
+      render :index
     end
   end
 
-  def  search
-    @markets = Market.find(params[:q])
+  def show
+    if params[:q]
+      @market = Market.find(params[:q])
+    else
+      @market = Market.find(params[:id])
+    end
   end
 
   def edit
@@ -27,8 +28,9 @@ class MarketsController < ApplicationController
 
   def update
     @market = Market.find(params[:id])
-    @market.update_attributes(market_update_params)
-    redirect_to root_path
+    @market = @market.update_attributes(market_update_params)
+    redirect_to market_path
+
   end
 
   def destroy
@@ -41,11 +43,11 @@ class MarketsController < ApplicationController
   private
 
   def market_create_params
-    params.require(:market).permit(:name, :city, :county, :state, :zip)
+    params.require(:market).permit(:name, :address, :city, :county, :state, :zip)
   end
 
   def market_update_params
-    params.require(:market).permit(:name, :city, :county, :state, :zip)
+    params.require(:market).permit(:name, :address, :city, :county, :state, :zip)
   end
 
 end
