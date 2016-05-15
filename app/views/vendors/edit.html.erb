@@ -1,7 +1,4 @@
 
-<%=params%>
-
-
 <div class="tittle"><h1>HI!! Let's <%= @vendor.name %> where id is <%= @vendor.id %>!</h1></div>
 <div class="form">
 <%= form_for @vendor, url: update_vendor_path(@vendor.id) do |f| %>

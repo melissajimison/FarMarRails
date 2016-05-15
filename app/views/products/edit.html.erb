@@ -1,14 +1,13 @@
-<h1>product edit page</h1>
-<pre><%= params %></pre>
-<pre><%= @product.name %></pre>
-<pre><%= @product %></pre>
+<main>
+	<h2>You are editing <%= @product.name %></h2>
 
-<%= form_for @product do |f| %>
+	 <%= form_for [@product.vendor, @product] do |f| %>
+	<ul>
+		<li><%= f.label :"Product's name" %>
+		  <%= f.text_field :name %>
+		  <%= f.hidden_field :vendor_id, value: params[:vendor_id] %>
+		  <%= f.submit %></li>
+		<% end %>
+	</ul>
 
-
-<table>
-	<td><%= f.label :name %>
-  <%= f.text_field :name %></td>
-    <td><%= f.submit %></td>
-<% end %>
-</table>
+</main>

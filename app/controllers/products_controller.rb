@@ -1,17 +1,23 @@
 class ProductsController < ApplicationController
 
 
-  def new 
+  def new
     @product = Product.new
+    @vendor = Vendor.find(params[:vendor_id])
   end
 
   def create
+    @vendor = Vendor.find(params[:vendor_id])
     @product = Product.new(product_create_params[:product])
     if @product.save
       redirect_to vendor_path(@product.vendor_id)
     else
     render :new
     end
+  end
+
+  def edit
+    @product = Product.find(params[:id])
   end
 
   def update

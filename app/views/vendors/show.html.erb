@@ -2,18 +2,18 @@
 	<div>
 		Vendor name: <%=@vendor.name%><br>
 		Number of Employees: <%=@vendor.employees%><br>
-		Market Name: <%=Market.find(@vendor.market_id).name%>
+		Market Name: <%=@vendor.market.name%>
 	</div>
 <article class="columns">
 	<h2>Your Products</h2>
 	<% @products.each do |product|%>
 	<ul class="product-list-ul">
-		<li class="product-list"><%= link_to product.name, product_path(product.id) %></li>
-		<li class="product-list"><%= button_to "Edit", product_edit_path, :method => :get, params: {product_id: product.id} %></li>
-		<li class="product-list"><%= button_to "Delete", product_delete_path, :method => :delete,  data: { confirm: "Are you sure?" }, params: {product_id: product.id} %></li>
+		<li class="product-list"><%= link_to product.name, vendor_product_path(@vendor, product) %></li>
+		<li class="product-list"><%= button_to "Edit", edit_vendor_product_path(@vendor, product), method: :get, params: {product_id: product.id} %></li>
+		<li class="product-list"><%= button_to "Delete", [@vendor, product], method: :delete,  data: { confirm: "Are you sure?" }, params: {product_id: product.id} %></li>
 	</ul><br>
 		<% end %>
-	<h4 class="button"><%=link_to "Add Product", product_new_path %></h4>
+	<h4 class="button"><%=link_to "Add Product", new_vendor_product_path(@vendor) %></h4>
 </article>
 
 

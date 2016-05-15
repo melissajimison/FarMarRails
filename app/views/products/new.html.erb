@@ -1,10 +1,11 @@
 <main>
-	<%= form_for @product, url: product_new_path do |f| %>
+	<h2>You are editing <%= @product.name %></h2>
+
+	 <%= form_for [@vendor, @product] do |f| %>
 	<ul>
-		<li><%= f.label :name %>
+		<li><%= f.label :"Your new product's name" %>
 		  <%= f.text_field :name %>
-			<%= f.label :vendor_id %>
-		  <%= f.text_field :vendor_id %>
+		  <%= f.hidden_field :vendor_id, value: params[:vendor_id] %>
 		  <%= f.submit %></li>
 		<% end %>
 	</ul>

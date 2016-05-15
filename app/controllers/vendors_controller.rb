@@ -5,9 +5,11 @@ class VendorsController < ApplicationController
   end
 
   def show
-    @vendor = Vendor.where(id: params[:id]).first
+    @vendor = Vendor.find(params[:id])
     @products = Product.where(vendor_id: params[:id])
     @sales = Sale.where(vendor_id: params[:id])
+    @market = Market.find(@vendor.market_id)
+
   end
 
   def search
@@ -21,11 +23,14 @@ class VendorsController < ApplicationController
 
   def create
     @vendor = Vendor.new(vendor_create_params)
-    if @vendor.save
+    @markets = Market.where(id: @vendor.market_id)
+    if @markets == [] && @vendor.save
+      flash[:error] = "We are sorry, but we could not find the market with id #{params[:q]} in our database"
+      redirect_to new_vendor_path
+    elsif @vendor.save
       redirect_to vendor_path(@vendor.id)
     else
-      # @artist = Artist.select(:id, :name).order(:name)
-      # render :index
+     render :index
     end
   end
 
@@ -39,7 +44,7 @@ class VendorsController < ApplicationController
 
   def update
     @vendor = Vendor.find(params[:id])
-    @vendor.update_attributes(vendor_update_params)
+    @vendor.update_attributes(vendor_create_params)
     redirect_to vendor_path
   end
 
@@ -54,10 +59,5 @@ class VendorsController < ApplicationController
   def vendor_create_params
     params.require(:vendor).permit(:name, :employees, :market_id)
   end
-
-  def vendor_update_params
-    params.require(:vendor).permit(:name, :employees, :market_id)
-  end
-
 
 end
