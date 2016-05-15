@@ -1,7 +1,7 @@
 <main>
-	<% if @user.errors.any? %>
-	    <% @user.errors.each do |column, message| %>
-	      <%  flash.now[:error] = "#{column.capitalize}: #{message} "%>
+	<% if @market.errors.any? %>
+	    <% @market.errors.each do |column, message| %>
+	      <%  flash[:error] = "#{column.capitalize}: #{message} "%>
 	    <% end %>
 	<% end %>
 

@@ -15,19 +15,15 @@ class MarketsController < ApplicationController
   end
 
   def show
-
-    begin
-      if params[:q]
-        @market = Market.find(params[:q])
+    if params[:q]
+      if Market.where(id: params[:q]) == []
+        flash[:error] = "We are sorry, but we could not find the market with id #{params[:q]} in our database"
+        redirect_to markets_path
       else
-        @market = Market.find(params[:id])
+        @market = Market.find(params[:q])
       end
-
-    rescue ActiveRecord::RecordNotFound
-     flash[:error] = "That Market does not exist"
-     redirect_to markets_path
-
-     return
+    else
+      @market = Market.find(params[:id])
     end
   end
 
@@ -37,9 +33,8 @@ class MarketsController < ApplicationController
 
   def update
     @market = Market.find(params[:id])
-    @market = @market.update_attributes(market_update_params)
+    @market = @market.update_attributes(market_create_params)
     redirect_to market_path
-
   end
 
   def destroy
@@ -48,14 +43,9 @@ class MarketsController < ApplicationController
     redirect_to root_path
   end
 
-
   private
 
   def market_create_params
-    params.require(:market).permit(:name, :address, :city, :county, :state, :zip)
-  end
-
-  def market_update_params
     params.require(:market).permit(:name, :address, :city, :county, :state, :zip)
   end
 
