@@ -11,7 +11,7 @@
 		<li class="product-list"><%= product.id %></li>
 		<li class="product-list"><%= link_to product.name, vendor_product_path(@vendor, product) %></li>
 		<li class="product-list"><%= button_to "Edit", edit_vendor_product_path(@vendor, product), method: :get, params: {product_id: product.id} %></li>
-		<li class="product-list"><%= button_to "Delete", vendor_product_path(@vendor, product), method: :delete,  data: { confirm: "Are you sure?" }, params: {product_id: product.id} %></li>
+		<li class="product-list"><%= button_to "Delete", vendor_product_path(@vendor.id, product.id), method: :delete,  data: { confirm: "Are you sure?" } %></li>
 	</ul><br>
 		<% end %>
 	<h4 class="button"><%=link_to "Add Product", new_vendor_product_path(@vendor) %></h4>

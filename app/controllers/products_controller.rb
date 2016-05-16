@@ -21,23 +21,15 @@ class ProductsController < ApplicationController
 
   def update
     product = Product.find(params[:id])
-    # task = Task.find(params[:id])
     product.update_attributes(product_update_params[:product])
     redirect_to vendor_path(product.vendor_id)
   end
 
-  def delete
-    redirect_to @product
-  end
-
   def destroy
-    @product = Product.where(id: params[:product_id])
-    @product.destroy_all
-    redirect_to vendor_path
-  end
-
-  def edit
-    @product = Product.find(params[:product_id])
+    @vendor = Vendor.find(params[:vendor_id])
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to vendor_path(@vendor.id)
   end
 
   def search

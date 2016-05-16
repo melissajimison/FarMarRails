@@ -17,7 +17,6 @@ class MarketsController < ApplicationController
   def show
     @market = Market.find(params[:id])
     @vendors = @market.vendors
-
   end
 
   def search

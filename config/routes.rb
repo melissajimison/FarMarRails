@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :markets
   #################
 
-
   get 'application/vendors/product/search' => 'products#search', as: 'search_product'
 
   ###############
